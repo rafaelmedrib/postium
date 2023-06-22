@@ -1,44 +1,26 @@
+import { routes } from '@redwoodjs/router'
+
 export default () => (
-  <main>
-    <style
-      dangerouslySetInnerHTML={{
-        __html: `
-              html, body {
-                margin: 0;
-              }
-              html * {
-                box-sizing: border-box;
-              }
-              main {
-                display: flex;
-                align-items: center;
-                font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
-                text-align: center;
-                background-color: #E2E8F0;
-                height: 100vh;
-              }
-              section {
-                background-color: white;
-                border-radius: 0.25rem;
-                width: 32rem;
-                padding: 1rem;
-                margin: 0 auto;
-                box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
-              }
-              h1 {
-                font-size: 2rem;
-                margin: 0;
-                font-weight: 500;
-                line-height: 1;
-                color: #2D3748;
-              }
-            `,
-      }}
-    />
-    <section>
-      <h1>
-        <span>404 Page Not Found</span>
-      </h1>
-    </section>
-  </main>
+  <section className="flex h-full items-center p-16 dark:bg-gray-900 dark:text-gray-100">
+    <div className="container mx-auto my-8 flex flex-col items-center justify-center px-5">
+      <div className="max-w-md text-center">
+        <h2 className="mb-8 text-9xl font-extrabold dark:text-gray-600">
+          <span className="sr-only">Error</span>404
+        </h2>
+        <p className="text-2xl font-semibold md:text-3xl">
+          Sorry, we couldn't find this page.
+        </p>
+        <p className="mb-8 mt-4 dark:text-gray-400">
+          But dont worry, you can find plenty of other things on our homepage.
+        </p>
+        <a
+          rel="noopener noreferrer"
+          href={routes.home()}
+          className="rounded px-8 py-3 font-semibold dark:bg-violet-400 dark:text-gray-900"
+        >
+          Back to homepage
+        </a>
+      </div>
+    </div>
+  </section>
 )

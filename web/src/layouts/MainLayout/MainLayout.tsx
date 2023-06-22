@@ -1,3 +1,5 @@
+import { Link, routes } from '@redwoodjs/router'
+
 type MainLayoutProps = {
   children?: React.ReactNode
 }
@@ -10,7 +12,7 @@ const MainLayout = ({ children }: MainLayoutProps) => {
           <div className="flex">
             <a
               rel="noopener noreferrer"
-              href="#"
+              href="/"
               aria-label="Back to homepage"
               className="flex items-center p-2"
             >
@@ -26,40 +28,12 @@ const MainLayout = ({ children }: MainLayoutProps) => {
             </a>
             <ul className="hidden items-stretch space-x-3 lg:flex">
               <li className="flex">
-                <a
-                  rel="noopener noreferrer"
-                  href="#"
+                <Link
+                  to={routes.home()}
                   className="-mb-1 flex items-center border-b-2 px-4 dark:border-transparent"
                 >
-                  Link
-                </a>
-              </li>
-              <li className="flex">
-                <a
-                  rel="noopener noreferrer"
-                  href="#"
-                  className="-mb-1 flex items-center border-b-2 px-4 dark:border-transparent dark:border-violet-400 dark:text-violet-400"
-                >
-                  Link
-                </a>
-              </li>
-              <li className="flex">
-                <a
-                  rel="noopener noreferrer"
-                  href="#"
-                  className="-mb-1 flex items-center border-b-2 px-4 dark:border-transparent"
-                >
-                  Link
-                </a>
-              </li>
-              <li className="flex">
-                <a
-                  rel="noopener noreferrer"
-                  href="#"
-                  className="-mb-1 flex items-center border-b-2 px-4 dark:border-transparent"
-                >
-                  Link
-                </a>
+                  Home
+                </Link>
               </li>
             </ul>
           </div>
