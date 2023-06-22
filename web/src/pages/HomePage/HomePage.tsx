@@ -1,4 +1,4 @@
-import { Link, routes } from '@redwoodjs/router'
+import { navigate, routes } from '@redwoodjs/router'
 import { MetaTags } from '@redwoodjs/web'
 
 const HomePage = () => {
@@ -6,14 +6,31 @@ const HomePage = () => {
     <>
       <MetaTags title="Home" description="Home page" />
 
-      <h1>HomePage</h1>
-      <p>
-        Find me in <code>./web/src/pages/HomePage/HomePage.tsx</code>
-      </p>
-      <p>
-        My default route is named <code>home</code>, link to me with `
-        <Link to={routes.home()}>Home</Link>`
-      </p>
+      <section className="dark:bg-gray-800 dark:text-gray-100">
+        <div className="container mx-auto flex flex-col items-center px-4 py-16 text-center md:px-10 md:py-32 lg:px-32 xl:max-w-3xl">
+          <h1 className="leadi text-4xl font-bold sm:text-5xl">
+            Quisquam necessita vel
+            <span className="dark:text-violet-400">laborum doloribus</span>
+            delectus
+          </h1>
+          <p className="mb-12 mt-8 px-8 text-lg">
+            Cupiditate minima voluptate temporibus quia? Architecto beatae esse
+            ab amet vero eaque explicabo!
+          </p>
+          <div className="flex flex-wrap justify-center">
+            <button
+              // TODO: - Change to navigate to the signIn/signUp page
+              onClick={() => navigate(routes.home())}
+              className="m-2 rounded px-8 py-3 text-lg font-semibold dark:bg-violet-400 dark:text-gray-900"
+            >
+              Get started
+            </button>
+            <button className="m-2 rounded border px-8 py-3 text-lg dark:border-gray-700 dark:text-gray-50">
+              Learn more
+            </button>
+          </div>
+        </div>
+      </section>
     </>
   )
 }
