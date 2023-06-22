@@ -35,6 +35,14 @@ const MainLayout = ({ children }: MainLayoutProps) => {
                   Home
                 </Link>
               </li>
+              <li className="flex">
+                <Link
+                  to={routes.about()}
+                  className="-mb-1 flex items-center border-b-2 px-4 dark:border-transparent"
+                >
+                  About
+                </Link>
+              </li>
             </ul>
           </div>
           <div className="hidden flex-shrink-0 items-center lg:flex">
@@ -60,7 +68,7 @@ const MainLayout = ({ children }: MainLayoutProps) => {
           </button>
         </div>
       </header>
-      <main>{children}</main>
+      <main className="dark:bg-gray-800 dark:text-gray-100">{children}</main>
     </>
   )
 }
