@@ -68,7 +68,7 @@ const MainLayout = ({ children }: MainLayoutProps) => {
           </button>
         </div>
       </header>
-      <main>{children}</main>
+      <main className="dark:bg-gray-800 dark:text-gray-100">{children}</main>
     </>
   )
 }

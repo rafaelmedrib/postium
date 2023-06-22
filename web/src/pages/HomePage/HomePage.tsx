@@ -25,7 +25,10 @@ const HomePage = () => {
             >
               Get started
             </button>
-            <button className="m-2 rounded border px-8 py-3 text-lg dark:border-gray-700 dark:text-gray-50">
+            <button
+              onClick={() => navigate(routes.about())}
+              className="m-2 rounded border px-8 py-3 text-lg dark:border-gray-700 dark:text-gray-50"
+            >
               Learn more
             </button>
           </div>
