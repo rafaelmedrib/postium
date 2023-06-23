@@ -2,6 +2,8 @@ import type { FindArticleQuery, FindArticleQueryVariables } from 'types/graphql'
 
 import type { CellSuccessProps, CellFailureProps } from '@redwoodjs/web'
 
+import ArticleImage from '../ArticleImage/ArticleImage'
+
 export const QUERY = gql`
   query FindArticleQuery($id: Int!) {
     article: post(id: $id) {
@@ -28,15 +30,13 @@ export const Failure = ({
 )
 
 export const Success = ({ article }: CellSuccessProps<ArticleCellProps>) => {
+  const imageURL = 'https://picsum.photos/700/400'
+
   return (
     <>
       <div className="mx-auto p-5 dark:bg-gray-800 dark:text-gray-100 sm:p-10 md:p-16">
         <div className="mx-auto flex max-w-3xl flex-col overflow-hidden rounded">
-          <img
-            src="https://picsum.photos/700/400"
-            alt=""
-            className="h-60 w-full dark:bg-gray-500 sm:h-96"
-          />
+          <ArticleImage imageURL={imageURL} />
           <div className="m-4 mx-auto -mt-16 space-y-6 p-6 pb-12 dark:bg-gray-900 sm:mx-12 sm:px-10 lg:max-w-2xl lg:rounded-md">
             <div className="space-y-2">
               <p
