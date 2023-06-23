@@ -1,5 +1,6 @@
 import type { ArticlesQuery } from 'types/graphql'
 
+import { routes } from '@redwoodjs/router'
 import type { CellSuccessProps, CellFailureProps } from '@redwoodjs/web'
 
 import { truncate } from '../../lib/formatters'
@@ -41,7 +42,7 @@ export const Success = ({ articles }: CellSuccessProps<ArticlesQuery>) => {
                 <div className="mt-3">
                   <a
                     rel="noopener noreferrer"
-                    href="/"
+                    href={routes.article({ id: item.id.toString() })}
                     className="text-2xl font-bold hover:underline"
                   >
                     {item.title}
@@ -51,7 +52,7 @@ export const Success = ({ articles }: CellSuccessProps<ArticlesQuery>) => {
                 <div className="mt-4 flex items-center justify-between">
                   <a
                     rel="noopener noreferrer"
-                    href="/"
+                    href={routes.article({ id: item.id.toString() })}
                     className="hover:underline dark:text-violet-400"
                   >
                     Read more
