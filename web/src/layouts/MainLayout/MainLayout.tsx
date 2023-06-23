@@ -37,6 +37,14 @@ const MainLayout = ({ children }: MainLayoutProps) => {
               </li>
               <li className="flex">
                 <Link
+                  to={routes.articles()}
+                  className="-mb-1 flex items-center border-b-2 px-4 dark:border-transparent"
+                >
+                  Articles
+                </Link>
+              </li>
+              <li className="flex">
+                <Link
                   to={routes.about()}
                   className="-mb-1 flex items-center border-b-2 px-4 dark:border-transparent"
                 >
