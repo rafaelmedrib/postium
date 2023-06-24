@@ -13,9 +13,11 @@ import ScaffoldLayout from 'src/layouts/ScaffoldLayout'
 
 import MainLayout from './layouts/MainLayout/MainLayout'
 
+import { useAuth } from './auth'
+
 const Routes = () => {
   return (
-    <Router>
+    <Router useAuth={useAuth}>
       <Set wrap={MainLayout}>
         <Route path="/home" page={HomePage} name="home" />
         <Route path="/about" page={AboutPage} name="about" />

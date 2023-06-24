@@ -12,7 +12,7 @@ const MainLayout = ({ children }: MainLayoutProps) => {
           <div className="flex">
             <a
               rel="noopener noreferrer"
-              href="/"
+              href={routes.home()}
               aria-label="Back to homepage"
               className="flex items-center p-2"
             >
