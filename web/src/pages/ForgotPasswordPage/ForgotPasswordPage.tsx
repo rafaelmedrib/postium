@@ -40,52 +40,53 @@ const ForgotPasswordPage = () => {
   return (
     <>
       <MetaTags title="Forgot Password" />
-
-      <main className="rw-main">
+      <main
+        className="mx-auto flex max-w-md flex-col
+       rounded-md p-6 dark:bg-gray-900 dark:text-gray-100 sm:p-10"
+      >
         <Toaster toastOptions={{ className: 'rw-toast', duration: 6000 }} />
-        <div className="rw-scaffold rw-login-container">
-          <div className="rw-segment">
-            <header className="rw-segment-header">
-              <h2 className="rw-heading rw-heading-secondary">
-                Forgot Password
-              </h2>
-            </header>
-
-            <div className="rw-segment-main">
-              <div className="rw-form-wrapper">
-                <Form onSubmit={onSubmit} className="rw-form-wrapper">
-                  <div className="text-left">
-                    <Label
-                      name="email"
-                      className="rw-label"
-                      errorClassName="rw-label rw-label-error"
-                    >
-                      Email
-                    </Label>
-                    <TextField
-                      name="email"
-                      className="rw-input"
-                      errorClassName="rw-input rw-input-error"
-                      ref={emailRef}
-                      validation={{
-                        required: {
-                          value: true,
-                          message: 'Email is required',
-                        },
-                      }}
-                    />
-
-                    <FieldError name="email" className="rw-field-error" />
-                  </div>
-
-                  <div className="rw-button-group">
-                    <Submit className="rw-button rw-button-blue">Submit</Submit>
-                  </div>
-                </Form>
-              </div>
+        <div className="mb-8 text-center">
+          <h1 className="my-3 text-4xl font-bold">Forgot Password ?</h1>
+          <p className="text-sm dark:text-gray-400">
+            Inform us of your email address and we'll send you a link to reset
+            your password
+          </p>
+        </div>
+        <Form onSubmit={onSubmit} className="space-y-12">
+          <div className="space-y-4">
+            <div>
+              <Label
+                name="email"
+                errorClassName="rw-label rw-label-error"
+                className="mb-2 block text-sm"
+              >
+                Email address
+              </Label>
+              <TextField
+                name="email"
+                errorClassName="rw-input rw-input-error"
+                ref={emailRef}
+                validation={{
+                  required: {
+                    value: true,
+                    message: 'Email is required',
+                  },
+                }}
+                placeholder="leroy@jenkins.com"
+                className="w-full rounded-md border px-3 py-2 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100"
+              />
+              <FieldError name="email" className="rw-field-error" />
+            </div>
+            <div></div>
+          </div>
+          <div className="space-y-2">
+            <div>
+              <Submit className="w-full rounded-md px-8 py-3 font-semibold dark:bg-violet-400 dark:text-gray-900">
+                Submit
+              </Submit>
             </div>
           </div>
-        </div>
+        </Form>
       </main>
     </>
   )
