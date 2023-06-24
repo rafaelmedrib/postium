@@ -4,7 +4,6 @@ const ArticleImage = ({ imageURL }) => {
   const [isLoading, setIsLoading] = useState(true)
 
   return (
-    // centralize the loading spinner
     <>
       <div className=" flex justify-center">
         {isLoading && (

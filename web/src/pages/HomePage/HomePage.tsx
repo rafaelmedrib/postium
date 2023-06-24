@@ -19,8 +19,7 @@ const HomePage = () => {
           </p>
           <div className="flex flex-wrap justify-center">
             <button
-              // TODO: - Change to navigate to the signIn/signUp page
-              onClick={() => navigate(routes.home())}
+              onClick={() => navigate(routes.login())}
               className="m-2 rounded px-8 py-3 text-lg font-semibold dark:bg-violet-400 dark:text-gray-900"
             >
               Get started
