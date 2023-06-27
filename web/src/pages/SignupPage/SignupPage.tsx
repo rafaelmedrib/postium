@@ -15,6 +15,7 @@ import { toast, Toaster } from '@redwoodjs/web/toast'
 
 import { useAuth } from 'src/auth'
 
+// TODO: - validations not working
 const SignupPage = () => {
   const { isAuthenticated, signUp } = useAuth()
 
