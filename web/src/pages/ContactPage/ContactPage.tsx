@@ -118,7 +118,7 @@ const ContactPage = () => {
               }}
               errorClassName="w-full rounded p-3 dark:bg-gray-800 border-2 border-red-500"
             />
-            <FieldError name="fullName" className="text-red-600" />
+            <FieldError name="name" className="text-red-600" />
           </div>
           <div>
             <Label name="email" className="text-sm">

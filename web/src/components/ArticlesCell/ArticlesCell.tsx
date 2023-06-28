@@ -54,7 +54,7 @@ export const Empty = () => (
           className="mx-auto h-52 md:h-64"
         />
         <p className="text-2xl font-semibold md:text-3xl">
-          Sorry, we couldn't find this page.
+          Sorry, there are no articles yet.
         </p>
         <p className="mb-8 mt-4 dark:text-gray-400">
           But dont worry, you can find plenty of other things on our homepage.

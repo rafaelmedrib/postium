@@ -18,16 +18,13 @@ import { useAuth } from 'src/auth'
 const LoginPage = () => {
   const { isAuthenticated, logIn } = useAuth()
 
+  const emailRef = useRef<HTMLInputElement>()
+
   useEffect(() => {
     if (isAuthenticated) {
       navigate(routes.articles())
     }
   }, [isAuthenticated])
-
-  const emailRef = useRef<HTMLInputElement>(null)
-  useEffect(() => {
-    emailRef.current?.focus()
-  }, [])
 
   const onSubmit = async (data: Record<string, string>) => {
     const response = await logIn({
@@ -39,6 +36,7 @@ const LoginPage = () => {
       toast(response.message)
     } else if (response.error) {
       toast.error(response.error)
+      emailRef.current?.focus()
     } else {
       toast.success('Welcome back!')
     }
@@ -73,9 +71,10 @@ const LoginPage = () => {
                 errorClassName="rw-input rw-input-error"
                 ref={emailRef}
                 validation={{
-                  required: {
-                    value: true,
-                    message: 'Email is required',
+                  required: true,
+                  pattern: {
+                    value: /[^@]+@[^.]+\..+/,
+                    message: 'Please enter a valid email',
                   },
                 }}
                 placeholder="leroy@jenkins.com"
