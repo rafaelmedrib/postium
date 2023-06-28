@@ -8,6 +8,7 @@ import {
   PasswordField,
   Submit,
   FieldError,
+  useForm,
 } from '@redwoodjs/forms'
 import { Link, navigate, routes } from '@redwoodjs/router'
 import { MetaTags } from '@redwoodjs/web'
@@ -16,18 +17,19 @@ import { toast, Toaster } from '@redwoodjs/web/toast'
 import { useAuth } from 'src/auth'
 
 const LoginPage = () => {
+  const formMethods = useForm({ mode: 'onBlur' })
+
   const { isAuthenticated, logIn } = useAuth()
+
+  const emailRef = useRef<HTMLInputElement>()
 
   useEffect(() => {
     if (isAuthenticated) {
       navigate(routes.articles())
+    } else {
+      emailRef.current?.focus()
     }
   }, [isAuthenticated])
-
-  const emailRef = useRef<HTMLInputElement>(null)
-  useEffect(() => {
-    emailRef.current?.focus()
-  }, [])
 
   const onSubmit = async (data: Record<string, string>) => {
     const response = await logIn({
@@ -39,6 +41,8 @@ const LoginPage = () => {
       toast(response.message)
     } else if (response.error) {
       toast.error(response.error)
+      formMethods.reset()
+      emailRef.current?.focus()
     } else {
       toast.success('Welcome back!')
     }
@@ -58,7 +62,11 @@ const LoginPage = () => {
             Sign in to access your account
           </p>
         </div>
-        <Form onSubmit={onSubmit} className="space-y-12">
+        <Form
+          onSubmit={onSubmit}
+          className="space-y-12"
+          formMethods={formMethods}
+        >
           <div className="space-y-4">
             <div>
               <Label
@@ -73,9 +81,10 @@ const LoginPage = () => {
                 errorClassName="rw-input rw-input-error"
                 ref={emailRef}
                 validation={{
-                  required: {
-                    value: true,
-                    message: 'Email is required',
+                  required: true,
+                  pattern: {
+                    value: /[^@]+@[^.]+\..+/,
+                    message: 'Please enter a valid email',
                   },
                 }}
                 placeholder="leroy@jenkins.com"
