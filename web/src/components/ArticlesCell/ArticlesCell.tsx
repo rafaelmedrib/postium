@@ -16,9 +16,60 @@ export const QUERY = gql`
   }
 `
 
-export const Loading = () => <div>Loading...</div>
+export const Loading = () => (
+  <section className="flex h-full items-center p-10 dark:bg-gray-900 dark:text-gray-100">
+    <div className="container mx-auto my-8 flex flex-col items-center justify-center px-5">
+      <div className="w-60 animate-pulse rounded py-4 shadow-md dark:bg-gray-900 sm:w-80">
+        <div className="flex space-x-4 p-4 sm:px-8">
+          <div className="h-5 w-full rounded dark:bg-gray-700"></div>
+        </div>
+        <div className="space-y-4 p-4 sm:px-8">
+          <div className="h-4 w-full rounded dark:bg-gray-700"></div>
+          <div className="h-4 w-full rounded dark:bg-gray-700"></div>
+          <div className="h-4 w-3/4 rounded dark:bg-gray-700"></div>
+        </div>
+      </div>
+      <div className="w-60 animate-pulse rounded py-4 shadow-md dark:bg-gray-900 sm:w-80">
+        <div className="flex space-x-4 p-4 sm:px-8">
+          <div className="h-5 w-full rounded dark:bg-gray-700"></div>
+        </div>
+        <div className="space-y-4 p-4 sm:px-8">
+          <div className="h-4 w-full rounded dark:bg-gray-700"></div>
+          <div className="h-4 w-full rounded dark:bg-gray-700"></div>
+          <div className="h-4 w-3/4 rounded dark:bg-gray-700"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+)
 
-export const Empty = () => <div>Empty</div>
+export const Empty = () => (
+  <section className="flex h-full items-center p-10 dark:bg-gray-900 dark:text-gray-100">
+    <div className="container mx-auto my-8 flex flex-col items-center justify-center px-5">
+      <div className="max-w-md text-center">
+        <span className="sr-only">Error</span>
+        <img
+          src="embarrassed_empty.svg"
+          alt=""
+          className="mx-auto h-52 md:h-64"
+        />
+        <p className="text-2xl font-semibold md:text-3xl">
+          Sorry, we couldn't find this page.
+        </p>
+        <p className="mb-8 mt-4 dark:text-gray-400">
+          But dont worry, you can find plenty of other things on our homepage.
+        </p>
+        <a
+          rel="noopener noreferrer"
+          href={routes.home()}
+          className="rounded px-8 py-3 font-semibold dark:bg-violet-400 dark:text-gray-900"
+        >
+          Back to homepage
+        </a>
+      </div>
+    </div>
+  </section>
+)
 
 export const Failure = ({ error }: CellFailureProps) => (
   <div style={{ color: 'red' }}>Error: {error?.message}</div>

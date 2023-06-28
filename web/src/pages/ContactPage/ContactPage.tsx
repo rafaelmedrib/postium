@@ -90,7 +90,7 @@ const ContactPage = () => {
               Vivamus in nisl metus? Phasellus.
             </div>
           </div>
-          <img src="doodle.svg" alt="" className="h-52 p-6 md:h-64" />
+          <img src="contact_doodle.svg" alt="" className="h-52 p-6 md:h-64" />
         </div>
         <Form
           className="space-y-6"
