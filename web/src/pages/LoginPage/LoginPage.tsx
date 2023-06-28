@@ -8,7 +8,6 @@ import {
   PasswordField,
   Submit,
   FieldError,
-  useForm,
 } from '@redwoodjs/forms'
 import { Link, navigate, routes } from '@redwoodjs/router'
 import { MetaTags } from '@redwoodjs/web'
@@ -17,8 +16,6 @@ import { toast, Toaster } from '@redwoodjs/web/toast'
 import { useAuth } from 'src/auth'
 
 const LoginPage = () => {
-  const formMethods = useForm({ mode: 'onBlur' })
-
   const { isAuthenticated, logIn } = useAuth()
 
   const emailRef = useRef<HTMLInputElement>()
@@ -26,8 +23,6 @@ const LoginPage = () => {
   useEffect(() => {
     if (isAuthenticated) {
       navigate(routes.articles())
-    } else {
-      emailRef.current?.focus()
     }
   }, [isAuthenticated])
 
@@ -41,7 +36,6 @@ const LoginPage = () => {
       toast(response.message)
     } else if (response.error) {
       toast.error(response.error)
-      formMethods.reset()
       emailRef.current?.focus()
     } else {
       toast.success('Welcome back!')
@@ -62,11 +56,7 @@ const LoginPage = () => {
             Sign in to access your account
           </p>
         </div>
-        <Form
-          onSubmit={onSubmit}
-          className="space-y-12"
-          formMethods={formMethods}
-        >
+        <Form onSubmit={onSubmit} className="space-y-12">
           <div className="space-y-4">
             <div>
               <Label

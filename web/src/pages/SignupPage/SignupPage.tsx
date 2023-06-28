@@ -8,7 +8,6 @@ import {
   PasswordField,
   FieldError,
   Submit,
-  useForm,
 } from '@redwoodjs/forms'
 import { Link, navigate, routes } from '@redwoodjs/router'
 import { MetaTags } from '@redwoodjs/web'
@@ -17,9 +16,9 @@ import { toast, Toaster } from '@redwoodjs/web/toast'
 import { useAuth } from 'src/auth'
 
 const SignupPage = () => {
-  const formMethods = useForm({ mode: 'onBlur' })
-
   const { isAuthenticated, signUp } = useAuth()
+
+  const emailRef = useRef<HTMLInputElement>()
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -27,8 +26,6 @@ const SignupPage = () => {
     }
   }, [isAuthenticated])
 
-  // focus on email box on page load
-  const emailRef = useRef<HTMLInputElement>()
   useEffect(() => {
     emailRef.current?.focus()
   }, [])
@@ -43,7 +40,6 @@ const SignupPage = () => {
       toast(response.message)
     } else if (response.error) {
       toast.error(response.error)
-      formMethods.reset()
       emailRef.current?.focus()
     } else {
       // user is signed in automatically
@@ -65,11 +61,7 @@ const SignupPage = () => {
             Sign up to create your account
           </p>
         </div>
-        <Form
-          onSubmit={onSubmit}
-          className="space-y-12"
-          formMethods={formMethods}
-        >
+        <Form onSubmit={onSubmit} className="space-y-12">
           <div className="space-y-4">
             <div>
               <Label
@@ -83,13 +75,6 @@ const SignupPage = () => {
                 name="email"
                 errorClassName="w-full rounded p-3 dark:bg-gray-800 border-2 border-red-500"
                 ref={emailRef}
-                validation={{
-                  required: true,
-                  pattern: {
-                    value: /[^@]+@[^.]+\..+/,
-                    message: 'Please enter a valid email',
-                  },
-                }}
                 placeholder="leroy@jenkins.com"
                 className="w-full rounded-md border px-3 py-2 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100"
               />
