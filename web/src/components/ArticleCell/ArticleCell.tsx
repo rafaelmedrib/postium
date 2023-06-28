@@ -19,7 +19,22 @@ interface ArticleCellProps extends CellSuccessProps<FindArticleQuery> {
   id: number
 }
 
-export const Loading = () => <div>Loading...</div>
+export const Loading = () => (
+  <section className="flex h-full items-center p-10 dark:bg-gray-900 dark:text-gray-100">
+    <div className="container mx-auto my-8 flex flex-col items-center justify-center px-5">
+      <div className="w-60 animate-pulse rounded py-4 shadow-md dark:bg-gray-900 sm:w-80">
+        <div className="flex space-x-4 p-4 sm:px-8">
+          <div className="h-5 w-full rounded dark:bg-gray-700"></div>
+        </div>
+        <div className="space-y-4 p-4 sm:px-8">
+          <div className="h-4 w-full rounded dark:bg-gray-700"></div>
+          <div className="h-4 w-full rounded dark:bg-gray-700"></div>
+          <div className="h-4 w-3/4 rounded dark:bg-gray-700"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+)
 
 export const Empty = () => <div>Empty</div>
 
